@@ -15,6 +15,8 @@ public class PaymentController {
 
     @PostMapping("/pay")
     public Payment pay(@RequestParam Integer reservationId, @RequestParam Integer amountSent, @RequestParam String mode) throws Exception{
+        Payment p;
         return paymentService.pay(reservationId,amountSent,mode);
+
     }
 }

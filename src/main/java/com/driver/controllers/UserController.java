@@ -19,8 +19,8 @@ public class UserController {
 
     @PutMapping("/update")
     public ResponseEntity<User> updatePassword(@RequestParam Integer userId, @RequestParam String password){
-        User updatedUser = new User();
-        return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+        User u = userService.updatePassword(userId,password);
+        return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete")

@@ -5,6 +5,8 @@ import com.driver.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -16,8 +18,11 @@ public class UserServiceImpl implements UserService {
     }
     @Override
     public User updatePassword(Integer userId, String password) {
-        User u = new User();
-        return u;
+        Optional<User> op = userRepository4.findById(userId);
+        User u = op.get();
+        u.setPassword(password);
+
+        return userRepository4.save(u);
     }
 
     @Override
